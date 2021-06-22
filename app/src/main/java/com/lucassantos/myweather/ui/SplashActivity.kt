@@ -1,5 +1,6 @@
 package com.lucassantos.myweather.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -8,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.lucassantos.myweather.R
 import com.lucassantos.myweather.databinding.ActivitySplashBinding
+import kotlinx.coroutines.delay
 
 class SplashActivity : AppCompatActivity() {
 
@@ -28,7 +30,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun goMainActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
-            Toast.makeText(this, "Teste", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, MainActivity::class.java)).also { finish() }
         }, 1200)
     }
 }

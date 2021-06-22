@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.lucassantos.myweather.model.Weather
 import com.lucassantos.myweather.model.WeatherDAO
 
-@Database(entities = [Weather::class], exportSchema = false, version = 1)
+@Database(entities = [Weather::class], version = 1, exportSchema = false)
 abstract class WeatherAppDatabase : RoomDatabase() {
 
     abstract fun getWeatherDAO(): WeatherDAO
@@ -16,14 +16,12 @@ abstract class WeatherAppDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: WeatherAppDatabase? = null
 
-        fun getInstance(context: Context) = INSTANCE ?: synchronized(this) {
-            INSTANCE ?: buildDatabase(context).also { INSTANCE = it }
+        fun getInstance(context: Context): WeatherAppDatabase {
+            return INSTANCE ?: synchronized(this) {
+                val db = Room.databaseBuilder(context.applicationContext, WeatherAppDatabase::class.java, "MyWeather").build()
+                INSTANCE = db
+                db
+            }
         }
-
-        private fun buildDatabase(context: Context) = Room.databaseBuilder(
-            context.applicationContext,
-            WeatherAppDatabase::class.java,
-            "weatherDB.db"
-        ).build()
     }
 }
