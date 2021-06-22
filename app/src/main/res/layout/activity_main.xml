@@ -36,7 +36,7 @@
         app:layout_constraintBottom_toTopOf="@+id/imageWeatherStatus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="Ceú Limpo" />
+        tools:text="Cedro" />
 
     <ImageView
         android:id="@+id/imageWeatherStatus"
@@ -107,29 +107,29 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/imageTemperature"
+                    android:id="@+id/imageFeelsLikeTemp"
                     style="@style/ImageViewMain"
-                    android:contentDescription="@string/temperature"
+                    android:contentDescription="@string/sensation"
                     android:src="@drawable/ic_temperature"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textSupportTemperature"
+                    android:id="@+id/textSupportFeelsLikeTemp"
                     style="@style/TextViewSupportMain"
-                    android:text="@string/temperature"
+                    android:text="@string/sensation"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/imageTemperature"
+                    app:layout_constraintStart_toEndOf="@id/imageFeelsLikeTemp"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textTemperature"
+                    android:id="@+id/textFeelsLikeTemp"
                     style="@style/TextViewMain"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@id/textSupportTemperature"
-                    app:layout_constraintStart_toStartOf="@id/textSupportTemperature"
-                    app:layout_constraintTop_toBottomOf="@id/textSupportTemperature"
+                    app:layout_constraintEnd_toEndOf="@id/textSupportFeelsLikeTemp"
+                    app:layout_constraintStart_toStartOf="@id/textSupportFeelsLikeTemp"
+                    app:layout_constraintTop_toBottomOf="@id/textSupportFeelsLikeTemp"
                     tools:text="35.2°" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

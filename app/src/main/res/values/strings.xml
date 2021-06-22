@@ -2,6 +2,7 @@
     <string name="app_name">MyWeather</string>
     <!-- MainActivity -->
     <string name="temperature">Temperatura</string>
+    <string name="sensation">Sensação</string>
     <string name="humidity">Umidade</string>
     <string name="wind">Vento</string>
     <string name="pressure">Pressão</string>
