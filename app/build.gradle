@@ -38,6 +38,7 @@ android {
 
 dependencies {
     def room_version = "2.3.0"
+    def lifecycle_version = "2.3.1"
     /// Kotlin STD
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     /// Android X
@@ -52,6 +53,9 @@ dependencies {
     implementation("androidx.room:room-ktx:$room_version")
     annotationProcessor "androidx.room:room-compiler:$room_version"
     testImplementation("androidx.room:room-testing:$room_version")
+    /// Lifecycle
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
     /// JUnit
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
