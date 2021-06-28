@@ -1,6 +1,6 @@
 package com.lucassantos.myweather.data.network
 
-import com.lucassantos.myweather.data.domain.ResultWeatherAPI
+import com.lucassantos.myweather.model.domain.Weather
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -13,7 +13,7 @@ interface RetrofitService {
     fun getResultWeather(
         @Query("lat") lat: String,
         @Query("lon") log: String
-    ): Call<ResultWeatherAPI>
+    ): Call<Weather>
 
     companion object {
         @Volatile

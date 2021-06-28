@@ -4,10 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.lucassantos.myweather.model.Weather
-import com.lucassantos.myweather.model.WeatherDAO
+import androidx.room.TypeConverters
+import com.lucassantos.myweather.model.dao.WeatherDAO
+import com.lucassantos.myweather.model.domain.Weather
+import com.lucassantos.myweather.utils.Converters
 
 @Database(entities = [Weather::class], version = 1, exportSchema = false)
+@TypeConverters(Converters::class)
 abstract class WeatherAppDatabase : RoomDatabase() {
 
     abstract fun getWeatherDAO(): WeatherDAO

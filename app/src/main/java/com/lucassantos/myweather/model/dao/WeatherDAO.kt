@@ -1,10 +1,11 @@
-package com.lucassantos.myweather.model
+package com.lucassantos.myweather.model.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.lucassantos.myweather.model.domain.Weather
 
 @Dao
 interface WeatherDAO {

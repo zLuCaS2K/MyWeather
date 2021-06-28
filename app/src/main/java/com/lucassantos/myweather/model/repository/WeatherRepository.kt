@@ -1,6 +1,8 @@
-package com.lucassantos.myweather.model
+package com.lucassantos.myweather.model.repository
 
 import androidx.lifecycle.LiveData
+import com.lucassantos.myweather.model.dao.WeatherDAO
+import com.lucassantos.myweather.model.domain.Weather
 
 class WeatherRepository private constructor(private val _weatherDAO: WeatherDAO) {
 

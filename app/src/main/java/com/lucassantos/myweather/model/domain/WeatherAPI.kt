@@ -1,4 +1,4 @@
-package com.lucassantos.myweather.data.domain
+package com.lucassantos.myweather.model.domain
 
 import com.google.gson.annotations.SerializedName
 

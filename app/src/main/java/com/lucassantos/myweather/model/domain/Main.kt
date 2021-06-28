@@ -1,8 +1,8 @@
-package com.lucassantos.myweather.data.domain
+package com.lucassantos.myweather.model.domain
 
 import com.google.gson.annotations.SerializedName
 
-data class MainAPI(
+data class Main(
     @SerializedName("temp")
     val temperature: Double,
     @SerializedName("feels_like")

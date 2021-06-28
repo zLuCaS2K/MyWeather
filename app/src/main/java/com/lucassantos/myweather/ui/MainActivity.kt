@@ -1,7 +1,6 @@
 package com.lucassantos.myweather.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.lucassantos.myweather.databinding.ActivityMainBinding
@@ -26,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setObserversUI() {
         mViewModel.mWeather.observe(this, {
-            Log.v("TESTE", "$it")
+            mViewModel.insertWeather(it)
         })
     }
 }
