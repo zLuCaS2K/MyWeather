@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.lucassantos.myweather.databinding.ActivityMainBinding
+import com.lucassantos.myweather.model.domain.Weather
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,17 +16,39 @@ class MainActivity : AppCompatActivity() {
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
         initializeViewModel()
+        setObserversUI()
+        setListennersUI()
     }
 
     private fun initializeViewModel() {
-        mViewModel = ViewModelProvider(this, MainViewModelFactory(application)).get(MainViewModel::class.java)
+        mViewModel = ViewModelProvider(this, MainViewModelFactory(application))
+                    .get(MainViewModel::class.java)
         mViewModel.getWeather("-6.60667", "-39.06222")
-        setObserversUI()
     }
 
     private fun setObserversUI() {
         mViewModel.mWeather.observe(this, {
-            mViewModel.insertWeather(it)
+            setDataInUI(it)
         })
+    }
+
+    private fun setListennersUI() {
+        mBinding.imageButtonRefresh.setOnClickListener {
+            mViewModel.getWeather("-6.60667", "-39.06222")
+        }
+    }
+
+    private fun setDataInUI(weather: Weather) {
+        mBinding.apply {
+            this.textLocationStatus.text = weather.location
+            this.textTemperatureStatus.text = weather.main.temperature.toString()
+            this.textDescriptionStatus.text = weather.weatherAPI.first().description
+            this.textMainStatus.text = weather.weatherAPI.first().main
+
+            this.textFeelsLikeTemp.text = weather.main.feels_like.toString()
+            this.textHumidity.text = weather.main.humidity
+            this.textWind.text = weather.wind.wind.toString()
+            this.textPressure.text = "${weather.main.pressure} hPa"
+        }
     }
 }

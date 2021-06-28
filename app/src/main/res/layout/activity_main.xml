@@ -8,6 +8,7 @@
     tools:context=".ui.MainActivity">
 
     <ImageButton
+        android:id="@+id/imageButtonRefresh"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="5dp"
