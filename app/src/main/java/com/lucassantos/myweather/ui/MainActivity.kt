@@ -57,8 +57,8 @@ class MainActivity : AppCompatActivity() {
             this.textMainStatus.text = weather.weatherAPI.first().main
 
             this.textFeelsLikeTemp.text = weather.main.feels_like.toString()
-            this.textHumidity.text = weather.main.humidity
-            this.textWind.text = weather.wind.wind.toString()
+            this.textHumidity.text = "${weather.main.humidity}%"
+            this.textWind.text = "${weather.wind.wind} m/s"
             this.textPressure.text = "${weather.main.pressure} hPa"
         }
     }
