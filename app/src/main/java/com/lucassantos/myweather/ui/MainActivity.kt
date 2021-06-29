@@ -4,12 +4,16 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.lucassantos.myweather.databinding.ActivityMainBinding
+import com.lucassantos.myweather.extensions.getAlertDialog
 import com.lucassantos.myweather.model.domain.Weather
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mBinding: ActivityMainBinding
     private lateinit var mViewModel: MainViewModel
+    private val mAlertDialogLoading by lazy {
+        getAlertDialog(this, 0)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,13 +26,20 @@ class MainActivity : AppCompatActivity() {
 
     private fun initializeViewModel() {
         mViewModel = ViewModelProvider(this, MainViewModelFactory(application))
-                    .get(MainViewModel::class.java)
+            .get(MainViewModel::class.java)
         mViewModel.getWeather("-6.60667", "-39.06222")
     }
 
     private fun setObserversUI() {
         mViewModel.mWeather.observe(this, {
             setDataInUI(it)
+        })
+        mViewModel.isViewLoading.observe(this, {
+            if (it) {
+                mAlertDialogLoading.show()
+            } else {
+                mAlertDialogLoading.dismiss()
+            }
         })
     }
 
