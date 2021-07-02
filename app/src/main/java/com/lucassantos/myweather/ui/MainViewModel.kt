@@ -29,7 +29,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun insertWeather(weather: Weather) {
-        viewModelScope.launch { _weatherRepository.insertWeather(weather) }
+        viewModelScope.launch {
+            _weatherRepository.insertWeather(weather)
+            mWeather.postValue(weather)
+        }
     }
 
     fun getWeather(lat: String, log: String) {
@@ -38,10 +41,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             val response = _retrofitRepository.getWeather(lat, log)
             response.enqueue(object : Callback<Weather> {
                 override fun onResponse(call: Call<Weather>, response: Response<Weather>) {
-                    response.let {
+                    response.body()?.let {
                         isViewLoading.postValue(false)
                         anErrorOccurred.postValue(false)
-                        mWeather.postValue(response.body())
+                        insertWeather(it)
                     }
                 }
 

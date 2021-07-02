@@ -8,8 +8,8 @@ import com.google.gson.annotations.SerializedName
 @Entity
 data class Weather(
 
-    @PrimaryKey(autoGenerate = true)
-    val idWeather: Long = 0,
+    @PrimaryKey
+    val idWeather: Long = 1,
 
     @SerializedName("name")
     val location: String,
