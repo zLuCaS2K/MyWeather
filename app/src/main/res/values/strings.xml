@@ -8,5 +8,8 @@
     <string name="pressure">Pressão</string>
     <string name="refresh">Atualizar</string>
     <string name="weather">Clima</string>
+    <!-- Dialogs -->
+    <string name="error">Algo deu errado!</string>
+    <string name="error_text">Verifique sua conexão com a internet ou tente novamente mais tarde.</string>
 
 </resources>

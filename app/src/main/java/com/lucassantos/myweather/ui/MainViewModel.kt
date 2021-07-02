@@ -40,11 +40,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 override fun onResponse(call: Call<Weather>, response: Response<Weather>) {
                     response.let {
                         isViewLoading.postValue(false)
+                        anErrorOccurred.postValue(false)
                         mWeather.postValue(response.body())
                     }
                 }
 
                 override fun onFailure(call: Call<Weather>, t: Throwable) {
+                    isViewLoading.postValue(false)
                     anErrorOccurred.postValue(true)
                     t.printStackTrace()
                 }

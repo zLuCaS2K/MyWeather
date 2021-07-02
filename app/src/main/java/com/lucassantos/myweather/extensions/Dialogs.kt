@@ -5,18 +5,20 @@ import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.lucassantos.myweather.databinding.DialogErrorBinding
 import com.lucassantos.myweather.databinding.DialogLoadingBinding
 
 fun AppCompatActivity.getAlertDialog(activity: Activity = this, typeDialog: Int) : AlertDialog {
     val builder = AlertDialog.Builder(activity)
     val layoutInflater = LayoutInflater.from(activity)
     val dialogBinding = if (typeDialog == 0) {
+        builder.setCancelable(false)
         DialogLoadingBinding.inflate(layoutInflater)
     } else {
-        DialogLoadingBinding.inflate(layoutInflater)
+        builder.setCancelable(true)
+        DialogErrorBinding.inflate(layoutInflater)
     }
     builder.setView(dialogBinding.root)
-    builder.setCancelable(false)
     val alertDialog = builder.create()
     alertDialog.window?.let {
         it.setBackgroundDrawable(ColorDrawable(0))
