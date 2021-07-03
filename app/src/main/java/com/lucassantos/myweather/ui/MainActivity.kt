@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
 import com.lucassantos.myweather.databinding.ActivityMainBinding
 import com.lucassantos.myweather.extensions.getAlertDialog
 import com.lucassantos.myweather.model.domain.Weather
@@ -29,14 +30,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initializeViewModel() {
-        mViewModel = ViewModelProvider(this, MainViewModelFactory(application))
-            .get(MainViewModel::class.java)
-        mViewModel.getWeather("-6.60667", "-39.06222")
+        mViewModel = ViewModelProvider(this, MainViewModelFactory(application)).get(MainViewModel::class.java)
     }
 
     private fun setObserversUI() {
         mViewModel.mWeather.observe(this, {
-            setDataInUI(it)
+            if (it == null) {
+                Snackbar.make(mBinding.textPressure, "Sem dados salvo localmente", Snackbar.LENGTH_SHORT).show()
+            } else {
+                setDataInUI(it)
+            }
         })
         mViewModel.isViewLoading.observe(this, {
             if (it) mAlertDialogLoading.show() else mAlertDialogLoading.dismiss()

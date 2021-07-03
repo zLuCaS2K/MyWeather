@@ -2,12 +2,13 @@ package com.lucassantos.myweather.ui
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.lucassantos.myweather.data.db.WeatherAppDatabase
-import com.lucassantos.myweather.model.domain.Weather
 import com.lucassantos.myweather.data.network.RetrofitRepository
 import com.lucassantos.myweather.data.network.RetrofitService
+import com.lucassantos.myweather.model.domain.Weather
 import com.lucassantos.myweather.model.repository.WeatherRepository
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -18,7 +19,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _weatherRepository: WeatherRepository
     private val _retrofitRepository: RetrofitRepository
-    var mWeather = MutableLiveData<Weather>()
+    var mWeather: LiveData<Weather>
     var isViewLoading = MutableLiveData<Boolean>()
     var anErrorOccurred = MutableLiveData<Boolean>()
 
@@ -26,12 +27,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         val weatherDB = WeatherAppDatabase.getInstance(application)
         _weatherRepository = WeatherRepository.create(weatherDB.getWeatherDAO())
         _retrofitRepository = RetrofitRepository.create(RetrofitService.getInstance())
+        mWeather = _weatherRepository.getWeather()
     }
 
     fun insertWeather(weather: Weather) {
         viewModelScope.launch {
             _weatherRepository.insertWeather(weather)
-            mWeather.postValue(weather)
+            mWeather = _weatherRepository.getWeather()
         }
     }
 
