@@ -21,11 +21,19 @@ class SplashActivity : AppCompatActivity() {
         goMainActivity()
     }
 
+    /**
+     * PT-BR: Essa função reproduz uma animação no textNameApp.
+     * EN: This function plays an animation on the textNameApp.
+     */
     private fun animateTextNameApp() {
         val animation = AnimationUtils.loadAnimation(this, R.anim.fade)
         mBinding.textNameApp.startAnimation(animation)
     }
 
+    /**
+     * PT-BR: Essa função abre a MainActivity depois de 1200 milis (1.2 segundos).
+     * EN: This function open an MainActivity after 1200 milis (1.2 seconds).
+     */
     private fun goMainActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this, MainActivity::class.java)).also { finish() }

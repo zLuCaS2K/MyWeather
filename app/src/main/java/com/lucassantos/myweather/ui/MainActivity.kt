@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var mBinding: ActivityMainBinding
     private lateinit var mViewModel: MainViewModel
+
     private val mAlertDialogLoading: AlertDialog by lazy {
         getAlertDialog(this, 0)
     }
@@ -33,10 +34,18 @@ class MainActivity : AppCompatActivity() {
         setListennersUI()
     }
 
+    /**
+     * PT-BR: Essa função inicializa o MainViewModel.
+     * EN: This function initializes observers.
+     */
     private fun initializeViewModel() {
         mViewModel = ViewModelProvider(this, MainViewModelFactory(application)).get(MainViewModel::class.java)
     }
 
+    /**
+     * PT-BR: Essa função inicializa os observers.
+     * EN: This function initializes observers.
+     */
     private fun setObserversUI() {
         mViewModel.mWeather.observe(this, {
             if (it == null) {
@@ -59,6 +68,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * PT-BR: Essa função insere os dados na UI.
+     * EN: This function enters data into the UI.
+     */
     private fun setDataInUI(weather: Weather) {
         mBinding.apply {
             this.textLocationStatus.text = weather.location
@@ -66,6 +79,8 @@ class MainActivity : AppCompatActivity() {
                 .asBitmap()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .load("${Constants.API.URL_ICON}${weather.weatherAPI.first().icon}@2x.png")
+                .placeholder(R.drawable.ic_downloading)
+                .error(R.drawable.ic_signal_error)
                 .into(this.imageWeatherStatus)
             this.textTemperatureStatus.text =
                 getString(R.string.temperature_data, weather.main.temperature.toString())

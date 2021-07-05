@@ -7,6 +7,11 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.lucassantos.myweather.model.domain.Weather
 
+/**
+ * PT-BR: DAO para entidade Weather.
+ * EN: DAO for entity Weather.
+ */
+
 @Dao
 interface WeatherDAO {
 

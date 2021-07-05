@@ -4,6 +4,11 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
+/**
+ * PT-BR: Factory do MainViewModel.
+ * EN: MainViewModel Factory.
+ */
+
 class MainViewModelFactory constructor(private val application: Application) :
     ViewModelProvider.Factory {
 

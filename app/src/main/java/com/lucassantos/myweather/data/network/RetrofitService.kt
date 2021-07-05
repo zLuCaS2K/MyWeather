@@ -8,6 +8,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+/**
+ * PT-BR: RetrofitService usado para chamadas a API e para obter a instância do retrofit.
+ * EN: RetrofitService used for API calls and to get a retrofit instance.
+ */
+
 interface RetrofitService {
 
     @GET("weather?&&&units=metric&appid=${Constants.API.API_KEY}")

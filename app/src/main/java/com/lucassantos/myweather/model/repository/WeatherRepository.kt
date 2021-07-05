@@ -4,6 +4,11 @@ import androidx.lifecycle.LiveData
 import com.lucassantos.myweather.model.dao.WeatherDAO
 import com.lucassantos.myweather.model.domain.Weather
 
+/**
+ * PT-BR: Essa é a classe responsável pelo padrão de repositórios da camada de dados locais.
+ * EN: This is a class responsible for the local data tier repositories pattern.
+ */
+
 class WeatherRepository private constructor(private val _weatherDAO: WeatherDAO) {
 
     fun getWeather(): LiveData<Weather> = _weatherDAO.getWeather()

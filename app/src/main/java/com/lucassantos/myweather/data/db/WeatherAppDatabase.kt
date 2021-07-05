@@ -9,6 +9,11 @@ import com.lucassantos.myweather.model.dao.WeatherDAO
 import com.lucassantos.myweather.model.domain.Weather
 import com.lucassantos.myweather.utils.Converters
 
+/**
+ * PT-BR: WeatherAppDatabase com singleton.
+ * EN: WeatherAppDatabase with singleton.
+ */
+
 @Database(entities = [Weather::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class WeatherAppDatabase : RoomDatabase() {

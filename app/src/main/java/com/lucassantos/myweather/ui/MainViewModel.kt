@@ -30,6 +30,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         mWeather = _weatherRepository.getWeather()
     }
 
+    /**
+     * PT-BR: Essa função salva os dados no banco de dados.
+     * EN: This function saves the data to the database.
+     */
     fun insertWeather(weather: Weather) {
         viewModelScope.launch {
             _weatherRepository.insertWeather(weather)
@@ -37,22 +41,26 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    /**
+     * PT-BR: Fazendo o request a API e salvando os dados retirada no banco de dados.
+     * EN: Requesting the API and saving the retrieved data in the database.
+     */
     fun getWeather(lat: String, log: String) {
         viewModelScope.launch {
-            isViewLoading.postValue(true)
+            isViewLoading.postValue(true) /** Loading start */
             val response = _retrofitRepository.getWeather(lat, log)
             response.enqueue(object : Callback<Weather> {
                 override fun onResponse(call: Call<Weather>, response: Response<Weather>) {
                     response.body()?.let {
-                        isViewLoading.postValue(false)
-                        anErrorOccurred.postValue(false)
+                        isViewLoading.postValue(false) /** Loading end */
+                        anErrorOccurred.postValue(false) /** Error false */
                         insertWeather(it)
                     }
                 }
 
                 override fun onFailure(call: Call<Weather>, t: Throwable) {
-                    isViewLoading.postValue(false)
-                    anErrorOccurred.postValue(true)
+                    isViewLoading.postValue(false) /** Loading end */
+                    anErrorOccurred.postValue(true) /** Error true */
                     t.printStackTrace()
                 }
             })
