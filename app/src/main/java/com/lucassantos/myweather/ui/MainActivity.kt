@@ -1,13 +1,18 @@
 package com.lucassantos.myweather.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.snackbar.Snackbar
 import com.lucassantos.myweather.databinding.ActivityMainBinding
 import com.lucassantos.myweather.extensions.getAlertDialog
 import com.lucassantos.myweather.model.domain.Weather
+import com.lucassantos.myweather.utils.Constants
+import com.squareup.picasso.Picasso
 
 class MainActivity : AppCompatActivity() {
 
@@ -58,6 +63,11 @@ class MainActivity : AppCompatActivity() {
     private fun setDataInUI(weather: Weather) {
         mBinding.apply {
             this.textLocationStatus.text = weather.location
+            Glide.with(this@MainActivity)
+                .asBitmap()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .load("${Constants.API.URL_ICON}${weather.weatherAPI.first().icon}@2x.png")
+                .into(this.imageWeatherStatus)
             this.textTemperatureStatus.text = weather.main.temperature.toString()
             this.textDescriptionStatus.text = weather.weatherAPI.first().description
             this.textMainStatus.text = weather.weatherAPI.first().main
@@ -66,6 +76,7 @@ class MainActivity : AppCompatActivity() {
             this.textHumidity.text = "${weather.main.humidity}%"
             this.textWind.text = "${weather.wind.wind} m/s"
             this.textPressure.text = "${weather.main.pressure} hPa"
+            Log.v("TESTE", "${Constants.API.URL_ICON}${weather.weatherAPI.first().icon}@2x.png")
         }
     }
 }
