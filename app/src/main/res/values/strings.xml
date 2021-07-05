@@ -2,14 +2,21 @@
     <string name="app_name">MyWeather</string>
     <!-- MainActivity -->
     <string name="temperature">Temperatura</string>
+    <!-- Painel Inferior -->
     <string name="sensation">Sensação</string>
     <string name="humidity">Umidade</string>
     <string name="wind">Vento</string>
     <string name="pressure">Pressão</string>
+    <!-- Strings Painel Inferior -->
+
     <string name="refresh">Atualizar</string>
     <string name="weather">Clima</string>
     <!-- Dialogs -->
     <string name="error">Algo deu errado!</string>
     <string name="error_text">Verifique sua conexão com a internet ou tente novamente mais tarde.</string>
-
+    <!-- -->
+    <string name="temperature_data">%1$s°</string>
+    <string name="humidity_data">%s%%</string>
+    <string name="wind_data">%1$d m/s</string>
+    <string name="pressure_data">%1$d hPa</string>
 </resources>

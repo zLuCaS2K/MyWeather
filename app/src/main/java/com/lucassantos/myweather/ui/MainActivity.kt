@@ -1,18 +1,17 @@
 package com.lucassantos.myweather.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.snackbar.Snackbar
+import com.lucassantos.myweather.R
 import com.lucassantos.myweather.databinding.ActivityMainBinding
 import com.lucassantos.myweather.extensions.getAlertDialog
 import com.lucassantos.myweather.model.domain.Weather
 import com.lucassantos.myweather.utils.Constants
-import com.squareup.picasso.Picasso
 
 class MainActivity : AppCompatActivity() {
 
@@ -68,15 +67,19 @@ class MainActivity : AppCompatActivity() {
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .load("${Constants.API.URL_ICON}${weather.weatherAPI.first().icon}@2x.png")
                 .into(this.imageWeatherStatus)
-            this.textTemperatureStatus.text = weather.main.temperature.toString()
+            this.textTemperatureStatus.text =
+                getString(R.string.temperature_data, weather.main.temperature.toString())
             this.textDescriptionStatus.text = weather.weatherAPI.first().description
             this.textMainStatus.text = weather.weatherAPI.first().main
 
-            this.textFeelsLikeTemp.text = weather.main.feels_like.toString()
-            this.textHumidity.text = "${weather.main.humidity}%"
-            this.textWind.text = "${weather.wind.wind} m/s"
-            this.textPressure.text = "${weather.main.pressure} hPa"
-            Log.v("TESTE", "${Constants.API.URL_ICON}${weather.weatherAPI.first().icon}@2x.png")
+            this.textFeelsLikeTemp.text =
+                getString(R.string.temperature_data, weather.main.feels_like.toString())
+            this.textHumidity.text =
+                getString(R.string.humidity_data, weather.main.humidity)
+            this.textWind.text =
+                getString(R.string.wind_data, weather.wind.wind)
+            this.textPressure.text =
+                getString(R.string.pressure_data, weather.main.pressure)
         }
     }
 }
