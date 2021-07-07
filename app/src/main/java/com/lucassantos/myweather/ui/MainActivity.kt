@@ -1,5 +1,6 @@
 package com.lucassantos.myweather.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -65,6 +66,9 @@ class MainActivity : AppCompatActivity() {
     private fun setListennersUI() {
         mBinding.imageButtonRefresh.setOnClickListener {
             mViewModel.getWeather("-6.60667", "-39.06222")
+        }
+        mBinding.imageButtonSettings.setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
         }
     }
 

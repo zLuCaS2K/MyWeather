@@ -19,4 +19,9 @@
     <string name="humidity_data">%s%%</string>
     <string name="wind_data">%1$d m/s</string>
     <string name="pressure_data">%1$d hPa</string>
+    <string name="settings">Configurações</string>
+    <string name="back">Voltar</string>
+    <string name="temperature_unit">Unidade de Temperatura</string>
+    <string name="data_language">Idioma dos Dados</string>
+    <string name="app_language">Idioma do Aplicativo</string>
 </resources>
