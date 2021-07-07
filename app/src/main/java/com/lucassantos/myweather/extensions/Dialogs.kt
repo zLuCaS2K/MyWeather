@@ -5,6 +5,7 @@ import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.lucassantos.myweather.R
 import com.lucassantos.myweather.databinding.DialogErrorBinding
 import com.lucassantos.myweather.databinding.DialogLoadingBinding
 
@@ -27,7 +28,7 @@ fun AppCompatActivity.getAlertDialog(activity: Activity = this, typeDialog: Int)
     val alertDialog = builder.create()
     alertDialog.window?.let {
         it.setBackgroundDrawable(ColorDrawable(0))
-        // TODO: Implementar a animação do dialog
+        it.attributes?.windowAnimations = R.style.AlertDialogSweet
     }
     return alertDialog
 }

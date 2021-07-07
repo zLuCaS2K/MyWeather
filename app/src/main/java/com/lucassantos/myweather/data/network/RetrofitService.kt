@@ -15,7 +15,7 @@ import retrofit2.http.Query
 
 interface RetrofitService {
 
-    @GET("weather?&&&units=metric&appid=${Constants.API.API_KEY}")
+    @GET("weather?&&&units=metric&appid=${Constants.API.API_KEY}&lang=pt_br")
     fun getResultWeather(
         @Query("lat") lat: String,
         @Query("lon") log: String
