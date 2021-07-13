@@ -12,4 +12,10 @@ object Constants {
         const val BASE_URL = "https://api.openweathermap.org/data/2.5/"
         const val URL_ICON = "https://openweathermap.org/img/wn/"
     }
+
+    object DIALOGS {
+        const val DATA_LANGUAGE = "DataLanguage"
+        const val LANGUAGE_APP = "LanguageApp"
+        const val TEMPERATURE_UNIT = "TemperatureUnit"
+    }
 }

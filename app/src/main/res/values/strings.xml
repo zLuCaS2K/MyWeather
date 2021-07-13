@@ -21,7 +21,9 @@
     <string name="pressure_data">%1$d hPa</string>
     <string name="settings">Configurações</string>
     <string name="back">Voltar</string>
-    <string name="temperature_unit">Unidade de Temperatura</string>
+    <!-- Dialog Settings -->
     <string name="data_language">Idioma dos Dados</string>
     <string name="app_language">Idioma do Aplicativo</string>
+    <string name="temperature_unit">Unidade de Temperatura</string>
+    <string name="ready">Pronto</string>
 </resources>
