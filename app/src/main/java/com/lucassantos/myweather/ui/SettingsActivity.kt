@@ -82,14 +82,14 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun saveDataLanguage() {
-
+        // TODO: Implementar
     }
 
     private fun saveLanguageApp() {
-
+        // TODO: Implementar
     }
 
     private fun saveTemperatureUnit() {
-
+        // TODO: Implementar
     }
 }
