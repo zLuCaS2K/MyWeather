@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.lucassantos.myweather.R
 import com.lucassantos.myweather.databinding.ActivitySettingsBinding
 import com.lucassantos.myweather.databinding.DialogSettingsBinding
+import com.lucassantos.myweather.extensions.saveSettingsInDataStore
 import com.lucassantos.myweather.utils.Constants
 import com.lucassantos.myweather.utils.Utils
 
@@ -47,7 +48,10 @@ class SettingsActivity : AppCompatActivity() {
                 adapter = ArrayAdapter(this, R.layout.list_item, Utils.getListDataLanguage())
                 dialogBinding.textTitleDialogSettings.text = getString(R.string.data_language)
                 dialogBinding.btnSaveSettings.setOnClickListener {
-                    saveDataLanguage()
+                    saveSettingsInDataStore(
+                        Constants.PREFERENCES.LANGUAGE_DATA,
+                        dialogBinding.spinnerDialogSettings.selectedItem.toString()
+                    )
                     alertDialog.dismiss()
                 }
             }
@@ -55,7 +59,10 @@ class SettingsActivity : AppCompatActivity() {
                 adapter = ArrayAdapter(this, R.layout.list_item, Utils.getListLanguageApp())
                 dialogBinding.textTitleDialogSettings.text = getString(R.string.app_language)
                 dialogBinding.btnSaveSettings.setOnClickListener {
-                    saveLanguageApp()
+                    saveSettingsInDataStore(
+                        Constants.PREFERENCES.LANGUAGE_APP,
+                        dialogBinding.spinnerDialogSettings.selectedItem.toString()
+                    )
                     alertDialog.dismiss()
                 }
             }
@@ -63,7 +70,10 @@ class SettingsActivity : AppCompatActivity() {
                 adapter = ArrayAdapter(this, R.layout.list_item, Utils.getListTemperatureUnit())
                 dialogBinding.textTitleDialogSettings.text = getString(R.string.temperature_unit)
                 dialogBinding.btnSaveSettings.setOnClickListener {
-                    saveTemperatureUnit()
+                    saveSettingsInDataStore(
+                        Constants.PREFERENCES.TEMPERATURE_UNIT,
+                        dialogBinding.spinnerDialogSettings.selectedItem.toString()
+                    )
                     alertDialog.dismiss()
                 }
             }
@@ -79,17 +89,5 @@ class SettingsActivity : AppCompatActivity() {
             it.attributes?.windowAnimations = R.style.AlertDialogSweet
         }
         alertDialog.show()
-    }
-
-    private fun saveDataLanguage() {
-        // TODO: Implementar
-    }
-
-    private fun saveLanguageApp() {
-        // TODO: Implementar
-    }
-
-    private fun saveTemperatureUnit() {
-        // TODO: Implementar
     }
 }

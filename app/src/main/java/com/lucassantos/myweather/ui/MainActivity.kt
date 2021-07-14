@@ -2,17 +2,22 @@ package com.lucassantos.myweather.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.snackbar.Snackbar
 import com.lucassantos.myweather.R
 import com.lucassantos.myweather.databinding.ActivityMainBinding
 import com.lucassantos.myweather.extensions.getAlertDialog
+import com.lucassantos.myweather.extensions.readSettingsInDataStore
 import com.lucassantos.myweather.model.domain.Weather
 import com.lucassantos.myweather.utils.Constants
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,7 +45,8 @@ class MainActivity : AppCompatActivity() {
      * EN: This function initializes observers.
      */
     private fun initializeViewModel() {
-        mViewModel = ViewModelProvider(this, MainViewModelFactory(application)).get(MainViewModel::class.java)
+        mViewModel = ViewModelProvider(this, MainViewModelFactory(application))
+            .get(MainViewModel::class.java)
     }
 
     /**
@@ -50,7 +56,11 @@ class MainActivity : AppCompatActivity() {
     private fun setObserversUI() {
         mViewModel.mWeather.observe(this, {
             if (it == null) {
-                Snackbar.make(mBinding.textPressure, "Sem dados salvo localmente", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(
+                    mBinding.textPressure,
+                    "Sem dados salvo localmente",
+                    Snackbar.LENGTH_SHORT
+                ).show()
             } else {
                 setDataInUI(it)
             }
@@ -65,6 +75,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun setListennersUI() {
         mBinding.imageButtonRefresh.setOnClickListener {
+            lifecycleScope.launch {
+                val languageData = readSettingsInDataStore(Constants.PREFERENCES.LANGUAGE_DATA).first()
+                val languageApp = readSettingsInDataStore(Constants.PREFERENCES.LANGUAGE_APP).first()
+                val temperatureUnit = readSettingsInDataStore(Constants.PREFERENCES.TEMPERATURE_UNIT).first()
+                Log.v("TESTE", "$languageData | $languageApp | $temperatureUnit")
+            }
             mViewModel.getWeather("-6.60667", "-39.06222")
         }
         mBinding.imageButtonSettings.setOnClickListener {

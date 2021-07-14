@@ -12,7 +12,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyWeather">
-        <activity android:name=".ui.SettingsActivity"></activity>
         <activity android:name=".ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.MainActivity" />
+        <activity android:name=".ui.SettingsActivity" />
     </application>
 
 </manifest>

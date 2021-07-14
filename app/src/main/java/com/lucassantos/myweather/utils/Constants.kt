@@ -18,4 +18,12 @@ object Constants {
         const val LANGUAGE_APP = "LanguageApp"
         const val TEMPERATURE_UNIT = "TemperatureUnit"
     }
+
+    object PREFERENCES {
+        const val NAME = "WeatherSettings"
+        const val NO_PREFERENCES = "noSettings"
+        const val LANGUAGE_DATA = "language_data"
+        const val LANGUAGE_APP = "language_app"
+        const val TEMPERATURE_UNIT = "temperature_unit"
+    }
 }
