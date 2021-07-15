@@ -6,6 +6,8 @@ object Utils {
 
     fun getListLanguageApp() = listOf("en", "pt-br")
 
-    fun getListTemperatureUnit() = listOf("Celsius", "Fahrenheit")
+    fun getListTemperatureUnitSpinner() = listOf("Celsius", "Fahrenheit")
+
+    fun getListTemperatureUnitAPI() = listOf("metric", "imperial")
 
 }

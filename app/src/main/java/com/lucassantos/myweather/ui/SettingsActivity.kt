@@ -48,9 +48,15 @@ class SettingsActivity : AppCompatActivity() {
                 adapter = ArrayAdapter(this, R.layout.list_item, Utils.getListDataLanguage())
                 dialogBinding.textTitleDialogSettings.text = getString(R.string.data_language)
                 dialogBinding.btnSaveSettings.setOnClickListener {
+                    val spinnerItem = dialogBinding.spinnerDialogSettings.selectedItemPosition
+                    val value = if (spinnerItem == 0) {
+                        Utils.getListTemperatureUnitAPI().first()
+                    } else {
+                        Utils.getListTemperatureUnitAPI()[1]
+                    }
                     saveSettingsInDataStore(
                         Constants.PREFERENCES.LANGUAGE_DATA,
-                        dialogBinding.spinnerDialogSettings.selectedItem.toString()
+                        value
                     )
                     alertDialog.dismiss()
                 }
@@ -67,7 +73,7 @@ class SettingsActivity : AppCompatActivity() {
                 }
             }
             Constants.DIALOGS.TEMPERATURE_UNIT -> {
-                adapter = ArrayAdapter(this, R.layout.list_item, Utils.getListTemperatureUnit())
+                adapter = ArrayAdapter(this, R.layout.list_item, Utils.getListTemperatureUnitSpinner())
                 dialogBinding.textTitleDialogSettings.text = getString(R.string.temperature_unit)
                 dialogBinding.btnSaveSettings.setOnClickListener {
                     saveSettingsInDataStore(

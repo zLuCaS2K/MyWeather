@@ -45,10 +45,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
      * PT-BR: Fazendo o request a API e salvando os dados retirada no banco de dados.
      * EN: Requesting the API and saving the retrieved data in the database.
      */
-    fun getWeather(lat: String, log: String) {
+    fun getWeather(lat: String, log: String, unit: String, lang: String) {
         viewModelScope.launch {
             isViewLoading.postValue(true) /** Loading start */
-            val response = _retrofitRepository.getWeather(lat, log)
+            val response = _retrofitRepository.getWeather(lat, log, unit, lang)
             response.enqueue(object : Callback<Weather> {
                 override fun onResponse(call: Call<Weather>, response: Response<Weather>) {
                     response.body()?.let {

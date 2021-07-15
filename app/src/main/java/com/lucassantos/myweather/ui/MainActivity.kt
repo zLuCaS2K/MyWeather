@@ -16,6 +16,7 @@ import com.lucassantos.myweather.extensions.getAlertDialog
 import com.lucassantos.myweather.extensions.readSettingsInDataStore
 import com.lucassantos.myweather.model.domain.Weather
 import com.lucassantos.myweather.utils.Constants
+import com.lucassantos.myweather.utils.Utils
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
@@ -77,11 +78,9 @@ class MainActivity : AppCompatActivity() {
         mBinding.imageButtonRefresh.setOnClickListener {
             lifecycleScope.launch {
                 val languageData = readSettingsInDataStore(Constants.PREFERENCES.LANGUAGE_DATA).first()
-                val languageApp = readSettingsInDataStore(Constants.PREFERENCES.LANGUAGE_APP).first()
                 val temperatureUnit = readSettingsInDataStore(Constants.PREFERENCES.TEMPERATURE_UNIT).first()
-                Log.v("TESTE", "$languageData | $languageApp | $temperatureUnit")
+                mViewModel.getWeather("-6.60667", "-39.06222", temperatureUnit, languageData)
             }
-            mViewModel.getWeather("-6.60667", "-39.06222")
         }
         mBinding.imageButtonSettings.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))

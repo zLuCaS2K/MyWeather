@@ -38,68 +38,64 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.5" />
 
-    <TextView
-        android:id="@+id/textLocationStatus"
+    <LinearLayout
+        android:id="@+id/linearContainerMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:fontFamily="@font/poppins_bold"
-        android:includeFontPadding="false"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageWeatherStatus"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="Cedro" />
-
-    <ImageView
-        android:id="@+id/imageWeatherStatus"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginBottom="10dp"
-        android:contentDescription="@string/weather"
-        app:layout_constraintBottom_toTopOf="@id/textTemperatureStatus"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textTemperatureStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_bold"
-        android:includeFontPadding="false"
-        android:textColor="@color/blue"
-        android:textSize="32sp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline"
-        tools:text="35.0°" />
+        app:layout_constraintTop_toTopOf="@id/guideline">
 
-    <TextView
-        android:id="@+id/textDescriptionStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_regular"
-        android:includeFontPadding="false"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textTemperatureStatus"
-        tools:text="Ceú Limpo" />
+        <TextView
+            android:id="@+id/textLocationStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/poppins_bold"
+            android:includeFontPadding="false"
+            android:textSize="16sp"
+            tools:text="Cedro" />
 
-    <TextView
-        android:id="@+id/textMainStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:fontFamily="@font/poppins_bold"
-        android:includeFontPadding="false"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textDescriptionStatus"
-        tools:text="Chuva" />
+        <ImageView
+            android:id="@+id/imageWeatherStatus"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginBottom="10dp"
+            android:contentDescription="@string/weather" />
+
+        <TextView
+            android:id="@+id/textTemperatureStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:includeFontPadding="false"
+            android:textColor="@color/blue"
+            android:textSize="32sp"
+            tools:text="35.0°" />
+
+        <TextView
+            android:id="@+id/textDescriptionStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:includeFontPadding="false"
+            android:textSize="16sp"
+            tools:text="Ceú Limpo" />
+
+        <TextView
+            android:id="@+id/textMainStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:includeFontPadding="false"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            tools:text="Chuva" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
