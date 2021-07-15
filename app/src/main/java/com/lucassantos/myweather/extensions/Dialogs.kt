@@ -14,7 +14,7 @@ import com.lucassantos.myweather.databinding.DialogLoadingBinding
  * EN: This method returns an error or loading AlertDialog. (0 for loading and 1 for error).
  */
 
-fun AppCompatActivity.getAlertDialog(activity: Activity = this, typeDialog: Int) : AlertDialog {
+fun AppCompatActivity.getAlertDialog(activity: Activity = this, typeDialog: Int): AlertDialog {
     val builder = AlertDialog.Builder(activity)
     val layoutInflater = LayoutInflater.from(activity)
     val dialogBinding = if (typeDialog == 0) {

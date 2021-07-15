@@ -46,6 +46,7 @@ dependencies {
     def lottie_version = "3.7.0"
     def glide_version = "4.12.0"
     def datastore_version = "1.0.0-rc01"
+    def play_services_version = "18.0.0"
     /// Kotlin STD
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     /// Android X
@@ -77,6 +78,8 @@ dependencies {
     annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
     /// DataStore
     implementation "androidx.datastore:datastore-preferences:$datastore_version"
+    /// Location
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
     /// JUnit
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

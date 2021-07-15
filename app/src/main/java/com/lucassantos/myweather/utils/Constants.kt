@@ -8,7 +8,7 @@ package com.lucassantos.myweather.utils
 object Constants {
 
     object API {
-        const val API_KEY = "YOUR-API-KEY"
+        const val API_KEY = "54f4974233d0f3f0e5c05c3486b2596b"
         const val BASE_URL = "https://api.openweathermap.org/data/2.5/"
         const val URL_ICON = "https://openweathermap.org/img/wn/"
     }
@@ -25,5 +25,9 @@ object Constants {
         const val LANGUAGE_DATA = "language_data"
         const val LANGUAGE_APP = "language_app"
         const val TEMPERATURE_UNIT = "temperature_unit"
+    }
+
+    object REQUESTS {
+        const val REQUEST_CODE_LOCATION = 150
     }
 }
