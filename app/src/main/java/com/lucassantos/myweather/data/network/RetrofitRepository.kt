@@ -7,8 +7,8 @@ package com.lucassantos.myweather.data.network
 
 class RetrofitRepository constructor(private val retrofitService: RetrofitService) {
 
-    fun getWeather(lat: String, log: String, lang: String, unit: String) =
-        retrofitService.getResultWeather(lat, log, unit, lang)
+    fun getWeather(lat: String, lon: String, lang: String, units: String) =
+        retrofitService.getResultWeather(lat, lon, lang, units)
 
     companion object {
         fun create(retrofitService: RetrofitService): RetrofitRepository {

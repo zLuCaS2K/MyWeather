@@ -1,6 +1,7 @@
 package com.lucassantos.myweather.ui
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -45,10 +46,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
      * PT-BR: Fazendo o request a API e salvando os dados retirada no banco de dados.
      * EN: Requesting the API and saving the retrieved data in the database.
      */
-    fun getWeather(lat: String, log: String, unit: String, lang: String) {
+    fun getWeather(lat: String, lon: String, lang: String, units: String) {
         viewModelScope.launch {
             isViewLoading.postValue(true) /** Loading start */
-            val response = _retrofitRepository.getWeather(lat, log, unit, lang)
+            val response = _retrofitRepository.getWeather(lat, lon, lang, units)
             response.enqueue(object : Callback<Weather> {
                 override fun onResponse(call: Call<Weather>, response: Response<Weather>) {
                     response.body()?.let {

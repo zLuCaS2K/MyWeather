@@ -2,6 +2,7 @@ package com.lucassantos.myweather.ui
 
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
@@ -48,15 +49,9 @@ class SettingsActivity : AppCompatActivity() {
                 adapter = ArrayAdapter(this, R.layout.list_item, Utils.getListDataLanguage())
                 dialogBinding.textTitleDialogSettings.text = getString(R.string.data_language)
                 dialogBinding.btnSaveSettings.setOnClickListener {
-                    val spinnerItem = dialogBinding.spinnerDialogSettings.selectedItemPosition
-                    val value = if (spinnerItem == 0) {
-                        Utils.getListTemperatureUnitAPI().first()
-                    } else {
-                        Utils.getListTemperatureUnitAPI()[1]
-                    }
                     saveSettingsInDataStore(
                         Constants.PREFERENCES.LANGUAGE_DATA,
-                        value
+                        dialogBinding.spinnerDialogSettings.selectedItem.toString()
                     )
                     alertDialog.dismiss()
                 }
@@ -76,9 +71,15 @@ class SettingsActivity : AppCompatActivity() {
                 adapter = ArrayAdapter(this, R.layout.list_item, Utils.getListTemperatureUnitSpinner())
                 dialogBinding.textTitleDialogSettings.text = getString(R.string.temperature_unit)
                 dialogBinding.btnSaveSettings.setOnClickListener {
+                    val spinnerItem = dialogBinding.spinnerDialogSettings.selectedItemPosition
+                    val value = if (spinnerItem == 0) {
+                        Utils.getListTemperatureUnitAPI().first()
+                    } else {
+                        Utils.getListTemperatureUnitAPI()[1]
+                    }
                     saveSettingsInDataStore(
                         Constants.PREFERENCES.TEMPERATURE_UNIT,
-                        dialogBinding.spinnerDialogSettings.selectedItem.toString()
+                        value
                     )
                     alertDialog.dismiss()
                 }

@@ -15,12 +15,12 @@ import retrofit2.http.Query
 
 interface RetrofitService {
 
-    @GET("weather?&&&&appid=${Constants.API.API_KEY}&")
+    @GET("weather?&&appid=${Constants.API.API_KEY}&&")
     fun getResultWeather(
         @Query("lat") lat: String,
-        @Query("lon") log: String,
-        @Query("units") unit: String,
-        @Query("lang") lang: String
+        @Query("lon") lon: String,
+        @Query("lang") lang: String,
+        @Query("units") units: String
     ): Call<Weather>
 
     companion object {

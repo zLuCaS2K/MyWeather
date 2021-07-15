@@ -3,6 +3,7 @@ package com.lucassantos.myweather.ui
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -57,13 +58,12 @@ class MainActivity : AppCompatActivity() {
     private fun setObserversUI() {
         mViewModel.mWeather.observe(this, {
             if (it == null) {
-                Snackbar.make(
-                    mBinding.textPressure,
-                    "Sem dados salvo localmente",
-                    Snackbar.LENGTH_SHORT
-                ).show()
+                mBinding.linearContainerMain.visibility = View.GONE
+                mBinding.linearContainerInfo.visibility = View.VISIBLE
             } else {
                 setDataInUI(it)
+                mBinding.linearContainerMain.visibility = View.VISIBLE
+                mBinding.linearContainerInfo.visibility = View.GONE
             }
         })
         mViewModel.isViewLoading.observe(this, {
@@ -79,7 +79,8 @@ class MainActivity : AppCompatActivity() {
             lifecycleScope.launch {
                 val languageData = readSettingsInDataStore(Constants.PREFERENCES.LANGUAGE_DATA).first()
                 val temperatureUnit = readSettingsInDataStore(Constants.PREFERENCES.TEMPERATURE_UNIT).first()
-                mViewModel.getWeather("-6.60667", "-39.06222", temperatureUnit, languageData)
+                mViewModel.getWeather("-6.60667", "-39.06222", languageData, temperatureUnit)
+                Log.v("TESTE", "$languageData | $temperatureUnit")
             }
         }
         mBinding.imageButtonSettings.setOnClickListener {
