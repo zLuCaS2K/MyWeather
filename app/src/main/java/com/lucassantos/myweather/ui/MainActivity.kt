@@ -19,6 +19,8 @@ import com.lucassantos.myweather.databinding.ActivityMainBinding
 import com.lucassantos.myweather.extensions.getAlertDialog
 import com.lucassantos.myweather.extensions.readSettingsInDataStore
 import com.lucassantos.myweather.model.domain.Weather
+import com.lucassantos.myweather.ui.viewmodel.MainViewModel
+import com.lucassantos.myweather.ui.viewmodel.MainViewModelFactory
 import com.lucassantos.myweather.utils.Constants
 import com.lucassantos.myweather.utils.Utils
 import kotlinx.coroutines.flow.first
