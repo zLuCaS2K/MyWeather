@@ -20,6 +20,7 @@ import com.lucassantos.myweather.extensions.getAlertDialog
 import com.lucassantos.myweather.extensions.readSettingsInDataStore
 import com.lucassantos.myweather.model.domain.Weather
 import com.lucassantos.myweather.utils.Constants
+import com.lucassantos.myweather.utils.Utils
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
@@ -143,28 +144,43 @@ class MainActivity : AppCompatActivity() {
      * EN: This function enters data into the UI.
      */
     private fun setDataInUI(weather: Weather) {
-        mBinding.apply {
-            this.textLocationStatus.text = weather.location
-            Glide.with(this@MainActivity)
-                .asBitmap()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .load("${Constants.API.URL_ICON}${weather.weatherAPI.first().icon}@2x.png")
-                .placeholder(R.drawable.ic_downloading)
-                .error(R.drawable.ic_signal_error)
-                .into(this.imageWeatherStatus)
-            this.textTemperatureStatus.text =
-                getString(R.string.temperature_data, weather.main.temperature.toString())
-            this.textDescriptionStatus.text = weather.weatherAPI.first().description
-            this.textMainStatus.text = weather.weatherAPI.first().main
+        lifecycleScope.launch {
+            with(mBinding) {
+                val temperatureUnit = readSettingsInDataStore(Constants.PREFERENCES.TEMPERATURE_UNIT).first()
+                this.textLocationStatus.text = weather.location
+                Glide.with(this@MainActivity)
+                    .asBitmap()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .load("${Constants.API.URL_ICON}${weather.weatherAPI.first().icon}@2x.png")
+                    .placeholder(R.drawable.ic_downloading)
+                    .error(R.drawable.ic_signal_error)
+                    .into(this.imageWeatherStatus)
 
-            this.textFeelsLikeTemp.text =
-                getString(R.string.temperature_data, weather.main.feels_like.toString())
-            this.textHumidity.text =
-                getString(R.string.humidity_data, weather.main.humidity)
-            this.textWind.text =
-                getString(R.string.wind_data, weather.wind.wind)
-            this.textPressure.text =
-                getString(R.string.pressure_data, weather.main.pressure)
+                /**
+                 * PT-BR: Verificando qual é a unidade de temperatura.
+                 * EN:
+                 */
+                if (temperatureUnit == Utils.getListTemperatureUnitAPI().first()) {
+                    this.textTemperatureStatus.text =
+                        getString(R.string.temperature_data_celsius, weather.main.temperature.toString())
+                    this.textFeelsLikeTemp.text =
+                        getString(R.string.temperature_data_celsius, weather.main.feels_like.toString())
+                } else {
+                    this.textTemperatureStatus.text =
+                        getString(R.string.temperature_data_fahrenheit, weather.main.temperature.toString())
+                    this.textFeelsLikeTemp.text =
+                        getString(R.string.temperature_data_fahrenheit, weather.main.feels_like.toString())
+                }
+
+                this.textDescriptionStatus.text = weather.weatherAPI.first().description
+                this.textMainStatus.text = weather.weatherAPI.first().main
+                this.textHumidity.text =
+                    getString(R.string.humidity_data, weather.main.humidity)
+                this.textWind.text =
+                    getString(R.string.wind_data, weather.wind.wind)
+                this.textPressure.text =
+                    getString(R.string.pressure_data, weather.main.pressure)
+            }
         }
     }
 

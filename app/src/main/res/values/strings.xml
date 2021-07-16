@@ -16,7 +16,8 @@
     <string name="wind">Vento</string>
     <string name="pressure">Pressão</string>
     <!-- Painel Dados -->
-    <string name="temperature_data">%1$s°</string>
+    <string name="temperature_data_celsius">%1$s °</string>
+    <string name="temperature_data_fahrenheit">%1$s F</string>
     <string name="humidity_data">%s%%</string>
     <string name="wind_data">%1$d m/s</string>
     <string name="pressure_data">%1$d hPa</string>
