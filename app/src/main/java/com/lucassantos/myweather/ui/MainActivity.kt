@@ -36,10 +36,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mLocationClient: FusedLocationProviderClient
 
     private val mAlertDialogLoading: AlertDialog by lazy {
-        getAlertDialog(this, 0)
+        getAlertDialog(this, Constants.DIALOGS.DIALOG_LOADING)
     }
     private val mAlertDialogError: AlertDialog by lazy {
-        getAlertDialog(this, 1)
+        getAlertDialog(this, Constants.DIALOGS.DIALOG_ERROR)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

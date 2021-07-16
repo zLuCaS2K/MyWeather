@@ -1,10 +1,5 @@
 package com.lucassantos.myweather.utils
 
-/**
- * PT-BR: Essa classe tem como função fornecer contantes para serem usadas no projeto.
- * EN: This class has the function of providing constants to be used in the project.
- */
-
 object Constants {
 
     object API {
@@ -14,6 +9,8 @@ object Constants {
     }
 
     object DIALOGS {
+        const val DIALOG_LOADING = "DialogLoading"
+        const val DIALOG_ERROR = "DialogError"
         const val DATA_LANGUAGE = "DataLanguage"
         const val TEMPERATURE_UNIT = "TemperatureUnit"
     }
