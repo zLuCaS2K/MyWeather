@@ -10,6 +10,7 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
 
         <item name="colorError">@color/red</item>
+        <item name="colorOnBackground">@color/white</item>
 
         <item name="colorOnSecondary">@color/black</item>
         <!-- Customize your theme here. -->
