@@ -72,7 +72,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_bold"
             android:includeFontPadding="false"
-            android:textColor="@color/blue"
+            android:textColor="?attr/colorPrimary"
             android:textSize="32sp"
             tools:text="35.0°" />
 
