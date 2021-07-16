@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyWeather</string>
+    <string name="refresh">Atualizar</string>
+    <string name="weather">Clima</string>
+    <string name="temperature">Temperatura</string>
+    <string name="update">Atualizar</string>
+    <string name="snackbar_update_data">Deseja atualizar as informações?</string>
+    <string name="please_wait">Aguarde um instante</string>
+    <string name="error_permission">Permissão não Concedida!</string>
+    <string name="sensation">Sensação</string>
+    <string name="humidity">Umidade</string>
+    <string name="wind">Vento</string>
+    <string name="pressure">Pressão</string>
+    <string name="temperature_data_celsius">%1$s °</string>
+    <string name="temperature_data_fahrenheit">%1$s F</string>
+    <string name="humidity_data">%s%%</string>
+    <string name="wind_data">%1$d m/s</string>
+    <string name="pressure_data">%1$d hPa</string>
+    <string name="settings">Configurações</string>
+    <string name="back">Voltar</string>
+    <string name="data_language">Idioma dos Dados</string>
+    <string name="temperature_unit">Unidade de Temperatura</string>
+    <string name="ready">Pronto</string>
+    <string name="error">Algo deu errado!</string>
+    <string name="error_text">Verifique sua conexão com a internet ou tente novamente mais tarde.</string>
+</resources>

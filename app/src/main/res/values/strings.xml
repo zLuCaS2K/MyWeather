@@ -1,20 +1,20 @@
 <resources>
     <string name="app_name">MyWeather</string>
     <!-- MainActivity -->
-    <string name="refresh">Atualizar</string>
-    <string name="weather">Clima</string>
-    <string name="temperature">Temperatura</string>
+    <string name="refresh">Update</string>
+    <string name="weather">Weather</string>
+    <string name="temperature">Temperature</string>
     <!-- Snackbar -->
-    <string name="update">Atualizar</string>
-    <string name="snackbar_update_data">Deseja atualizar as informações?</string>
+    <string name="update">Update</string>
+    <string name="snackbar_update_data">Do you want to update the information?</string>
     <!-- Totas Permissões -->
-    <string name="please_wait">Aguarde um instante</string>
-    <string name="error_permission">Permissão não Concedida!</string>
+    <string name="please_wait">Please wait</string>
+    <string name="error_permission">Permission Not Granted!</string>
     <!-- Painel Inferior -->
-    <string name="sensation">Sensação</string>
-    <string name="humidity">Umidade</string>
-    <string name="wind">Vento</string>
-    <string name="pressure">Pressão</string>
+    <string name="sensation">Sensation</string>
+    <string name="humidity">Humidity</string>
+    <string name="wind">Wind</string>
+    <string name="pressure">Pressure</string>
     <!-- Painel Dados -->
     <string name="temperature_data_celsius">%1$s °</string>
     <string name="temperature_data_fahrenheit">%1$s F</string>
@@ -22,13 +22,13 @@
     <string name="wind_data">%1$d m/s</string>
     <string name="pressure_data">%1$d hPa</string>
     <!-- Settings Activity -->
-    <string name="settings">Configurações</string>
-    <string name="back">Voltar</string>
+    <string name="settings">Settings</string>
+    <string name="back">Back</string>
     <!-- Dialog Settings -->
-    <string name="data_language">Idioma dos Dados</string>
-    <string name="temperature_unit">Unidade de Temperatura</string>
-    <string name="ready">Pronto</string>
+    <string name="data_language">Data Idiom</string>
+    <string name="temperature_unit">Temperature Unit</string>
+    <string name="ready">Save</string>
     <!-- Dialogs -->
-    <string name="error">Algo deu errado!</string>
-    <string name="error_text">Verifique sua conexão com a internet ou tente novamente mais tarde.</string>
+    <string name="error">Something went wrong!</string>
+    <string name="error_text">" Please check your internet connection or try again later."</string>
 </resources>
