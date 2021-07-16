@@ -91,7 +91,6 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_bold"
             android:includeFontPadding="false"
-            android:textColor="@color/black"
             android:textSize="20sp"
             tools:text="Chuva" />
 
