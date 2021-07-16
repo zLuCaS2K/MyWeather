@@ -1,11 +1,9 @@
 package com.lucassantos.myweather.ui
 
-import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Looper
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -112,12 +110,15 @@ class MainActivity : AppCompatActivity() {
     private fun setObserversUI() {
         mViewModel.mWeather.observe(this, {
             if (it == null) {
-                mBinding.linearContainerMain.visibility = View.GONE
-                mBinding.linearContainerInfo.visibility = View.VISIBLE
+                Snackbar.make(
+                    mBinding.linearContainerBottom,
+                    getString(R.string.snackbar_update_data),
+                    Snackbar.LENGTH_INDEFINITE
+                ).setAction(getString(R.string.update)) {
+                    checkPermissionLocation()
+                }.show()
             } else {
                 setDataInUI(it)
-                mBinding.linearContainerMain.visibility = View.VISIBLE
-                mBinding.linearContainerInfo.visibility = View.GONE
             }
         })
         mViewModel.isViewLoading.observe(this, {
@@ -173,13 +174,10 @@ class MainActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == Constants.REQUESTS.REQUEST_CODE_LOCATION && grantResults.isNotEmpty()) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Snackbar.make(mBinding.linearContainerBottom, "Tudo pronto! Clique em atualizar", Snackbar.LENGTH_LONG)
-                    .setAction(R.string.refresh) {
-                        checkPermissionLocation()
-                    }
-                    .show()
+                Toast.makeText(applicationContext, getString(R.string.please_wait), Toast.LENGTH_SHORT).show()
+                checkPermissionLocation()
             } else {
-                Toast.makeText(this, "Falha na permissão", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, getString(R.string.error_permission), Toast.LENGTH_SHORT).show()
             }
         }
     }

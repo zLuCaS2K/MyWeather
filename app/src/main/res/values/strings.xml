@@ -4,8 +4,12 @@
     <string name="refresh">Atualizar</string>
     <string name="weather">Clima</string>
     <string name="temperature">Temperatura</string>
-    <string name="not_data">Sem dados :/</string>
-    <string name="not_data_text">Atualize para obter as informações sobre o clima mais recente da sua localização.</string>
+    <!-- Snackbar -->
+    <string name="update">Atualizar</string>
+    <string name="snackbar_update_data">Deseja atualizar as informações?</string>
+    <!-- Totas Permissões -->
+    <string name="please_wait">Aguarde um instante</string>
+    <string name="error_permission">Permissão não Concedida!</string>
     <!-- Painel Inferior -->
     <string name="sensation">Sensação</string>
     <string name="humidity">Umidade</string>
