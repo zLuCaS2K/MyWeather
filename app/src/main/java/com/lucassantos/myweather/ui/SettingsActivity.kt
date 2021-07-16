@@ -34,6 +34,10 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * PT-BR: Mostra o dialog de configurações.
+     * EN: Show dialog settings.
+     */
     private fun showDialogSettings(dialogType: String) {
         val builder = AlertDialog.Builder(this)
         val layoutInflater = LayoutInflater.from(this)
@@ -45,6 +49,7 @@ class SettingsActivity : AppCompatActivity() {
                 adapter = ArrayAdapter(this, R.layout.list_item, Utils.getListDataLanguage())
                 dialogBinding.textTitleDialogSettings.text = getString(R.string.data_language)
                 dialogBinding.btnSaveSettings.setOnClickListener {
+                    /** Save using DataStore */
                     saveSettingsInDataStore(
                         Constants.PREFERENCES.LANGUAGE_DATA,
                         dialogBinding.spinnerDialogSettings.selectedItem.toString()
@@ -62,6 +67,7 @@ class SettingsActivity : AppCompatActivity() {
                     } else {
                         Utils.getListTemperatureUnitAPI()[1]
                     }
+                    /** Save using DataStore */
                     saveSettingsInDataStore(
                         Constants.PREFERENCES.TEMPERATURE_UNIT,
                         value

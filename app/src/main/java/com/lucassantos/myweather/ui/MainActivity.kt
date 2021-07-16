@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(mBinding.root)
         initializeViewModel()
         setObserversUI()
-        setListennersUI()
+        setListenerUI()
         setupLocationRequest()
         setupLocationCallback()
         initializeLocationClient()
@@ -62,11 +62,19 @@ class MainActivity : AppCompatActivity() {
         mViewModel = ViewModelProvider(this, MainViewModelFactory(application)).get(MainViewModel::class.java)
     }
 
+    /**
+     * PT-BR: Iniciando o LocationRequest.
+     * EN: Initialize LocationRequest.
+     */
     private fun setupLocationRequest() {
         mLocationRequest = LocationRequest.create()
         mLocationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
     }
 
+    /**
+     * PT-BR: Iniciando o LocationCallback e buscando os dados da API.
+     * EN: Initialize LocationCallback and get data in API.
+     */
     private fun setupLocationCallback() {
         mLocationCallback = object : LocationCallback() {
             override fun onLocationResult(locationResult: LocationResult) {
@@ -86,10 +94,18 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * PT-BR: Iniciando o LocationClient.
+     * EN: Initialize LocationClient.
+     */
     private fun initializeLocationClient() {
         mLocationClient = LocationServices.getFusedLocationProviderClient(this)
     }
 
+    /**
+     * PT-BR: Verificando as permissões e faz um request da localização.
+     * EN: Checking permissions and requesting the location.
+     */
     private fun checkPermissionLocation() {
         if (
             ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
@@ -132,7 +148,7 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun setListennersUI() {
+    private fun setListenerUI() {
         mBinding.imageButtonRefresh.setOnClickListener {
             checkPermissionLocation()
         }

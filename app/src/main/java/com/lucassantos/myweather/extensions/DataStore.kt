@@ -13,6 +13,11 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
+/**
+ * PT-BR: Extensões para o uso do datastore.
+ * EN: Extensions for using the datastore.
+ */
+
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(
     name = Constants.PREFERENCES.NAME
 )
