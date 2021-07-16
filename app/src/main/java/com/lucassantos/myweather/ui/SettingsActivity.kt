@@ -2,7 +2,6 @@ package com.lucassantos.myweather.ui
 
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
@@ -30,9 +29,6 @@ class SettingsActivity : AppCompatActivity() {
         mBinding.linearDataLanguage.setOnClickListener {
             showDialogSettings(Constants.DIALOGS.DATA_LANGUAGE)
         }
-        mBinding.linearLanguageApp.setOnClickListener {
-            showDialogSettings(Constants.DIALOGS.LANGUAGE_APP)
-        }
         mBinding.linearTemperatureUnit.setOnClickListener {
             showDialogSettings(Constants.DIALOGS.TEMPERATURE_UNIT)
         }
@@ -51,17 +47,6 @@ class SettingsActivity : AppCompatActivity() {
                 dialogBinding.btnSaveSettings.setOnClickListener {
                     saveSettingsInDataStore(
                         Constants.PREFERENCES.LANGUAGE_DATA,
-                        dialogBinding.spinnerDialogSettings.selectedItem.toString()
-                    )
-                    alertDialog.dismiss()
-                }
-            }
-            Constants.DIALOGS.LANGUAGE_APP -> {
-                adapter = ArrayAdapter(this, R.layout.list_item, Utils.getListLanguageApp())
-                dialogBinding.textTitleDialogSettings.text = getString(R.string.app_language)
-                dialogBinding.btnSaveSettings.setOnClickListener {
-                    saveSettingsInDataStore(
-                        Constants.PREFERENCES.LANGUAGE_APP,
                         dialogBinding.spinnerDialogSettings.selectedItem.toString()
                     )
                     alertDialog.dismiss()

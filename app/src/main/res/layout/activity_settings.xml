@@ -53,35 +53,6 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLanguageApp"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:orientation="horizontal"
-        tools:ignore="UseCompoundDrawables">
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:contentDescription="@string/app_language"
-            android:src="@drawable/ic_language" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:text="@string/app_language"
-            android:textSize="18sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/linearTemperatureUnit"
         android:layout_width="match_parent"
         android:layout_height="56dp"
